@@ -13,53 +13,7 @@ A scalable microservice for processing user activity logs in real time. Built wi
 
 The codebase follows **Domain-Driven Design (DDD)** with four clear layers:
 
-src/
-├── domain/                          # Core business logic (no external deps)
-│   ├── entities/
-│   │   └── ActivityLog.js           # Activity log entity with state transitions
-│   └── repositories/
-│       └── ActivityLogRepository.js # Repository contract (interface)
-│
-├── application/                     # Use cases / application services
-│   └── useCases/
-│       ├── IngestActivityLog.js     # Validate + publish to Kafka
-│       ├── ProcessActivityLog.js    # Consume from Kafka + persist to Mongo
-│       └── FetchActivityLogs.js     # Query with pagination & filters
-│
-├── infrastructure/                  # External systems adapters
-│   ├── database/
-│   │   ├── mongoConnection.js       # Connection helper with retry
-│   │   └── schemas/
-│   │       └── activityLogSchema.js # Mongoose schema + indexes
-│   ├── messaging/
-│   │   ├── kafkaClient.js           # Shared KafkaJS client
-│   │   ├── producer.js              # Kafka producer wrapper
-│   │   └── consumer.js              # Kafka consumer wrapper
-│   ├── repositories/
-│   │   └── MongoActivityLogRepository.js  # Concrete repo implementation
-│   └── logging/
-│       └── logger.js                # Winston structured logger
-│
-├── interfaces/                      # Delivery mechanism (HTTP)
-│   └── http/
-│       ├── server.js                # Express app factory
-│       ├── routes/
-│       │   └── activityRoutes.js    # REST endpoints
-│       └── middleware/
-│           ├── validation.js        # Request validation rules
-│           └── errorHandler.js      # Global error handler
-│
-└── index.js                         # Entry point (boots Mongo, Kafka, Express)
-
-config/
-└── index.js                         # Centralised env config
-
-k8s/                                 # Kubernetes manifests
-├── namespace.yaml
-├── configmap.yaml
-├── app-deployment.yaml
-├── mongo-deployment.yaml
-└── kafka-deployment.yaml
+[View Architecture Diagram](https://cacoo.com/diagrams/1SyT7HNVElisHo7P/view)
 
 ## Getting Started
 
