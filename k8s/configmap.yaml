@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: activity-tracker
+data:
+  PORT: "3000"
+  NODE_ENV: "production"
+  MONGODB_URI: "mongodb://mongo-service:27017/activity_tracker"
+  KAFKA_BROKERS: "kafka-service:9093"
+  KAFKA_CLIENT_ID: "activity-tracker-service"
+  KAFKA_GROUP_ID: "activity-log-processors"
+  KAFKA_TOPIC: "user-activity-logs"
